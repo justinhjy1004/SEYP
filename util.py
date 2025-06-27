@@ -50,3 +50,15 @@ def get_subplot_coords(index, num_rows, num_cols):
     col = (index % num_cols) + 1
 
     return (row, col)
+
+
+def df_prop(df: pl.DataFrame, col_name: str, num_obs: int):
+
+    return df.group_by(col_name).len().with_columns( (pl.col("len")/num_obs).alias("prop"))
+
+def df_multiselect_prop(df: pl.DataFrame, col_names: list, num_obs: int):
+
+    d = multi_select_counts(df, ["#"] + col_names).reset_index()
+    d["prop"] = d["count"]/num_obs
+
+    return d
