@@ -1,0 +1,7 @@
+polars
+plotly
+plotly[express]
+numpy
+pandas
+pyarrow
+nbformat==4.2.0

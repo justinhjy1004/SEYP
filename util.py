@@ -52,9 +52,17 @@ def get_subplot_coords(index, num_rows, num_cols):
     return (row, col)
 
 
-def df_prop(df: pl.DataFrame, col_name: str, num_obs: int):
+def df_prop(df: pl.DataFrame, col_name: str, num_obs: int, print_output=True):
 
-    return df.group_by(col_name).len().with_columns( (pl.col("len")/num_obs).alias("prop"))
+    prop = df.group_by(col_name).len().with_columns( (pl.col("len")/num_obs).alias("prop"))
+
+    if print_output:
+        
+        print(prop)
+
+        return
+
+    return prop
 
 def df_multiselect_prop(df: pl.DataFrame, col_names: list, num_obs: int):
 
