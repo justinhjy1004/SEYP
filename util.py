@@ -57,6 +57,7 @@ def df_prop(df: pl.DataFrame, col_name: str, num_obs: int, print_output=True):
     prop = df.group_by(col_name).len().with_columns( (pl.col("len")/num_obs).alias("prop"))
 
     if print_output:
+        print(col_name)
         
         print(prop)
 
