@@ -71,3 +71,23 @@ def df_multiselect_prop(df: pl.DataFrame, col_names: list, num_obs: int):
     d["prop"] = d["count"]/num_obs
 
     return d
+
+def pre_post_comparison(df_pre: pl.DataFrame, df_post: pl.DataFrame, N_pre: int, N_post: int, column_pre: str, column_post: str, standardized_col: str, entry_mapping: dict):
+
+    df_pre = df_pre.select(column_pre).with_columns(
+        pl.col(column_pre).replace(entry_mapping).alias(standardized_col),
+        pl.lit("Pre-Orientation").alias("When"),
+        pl.lit(N_pre).alias("N")
+    ).drop(column_pre)
+
+    df_post = df_post.select(column_post).with_columns(
+        pl.col(column_post).replace(entry_mapping).alias(standardized_col),
+        pl.lit("Post-Orientation").alias("When"),
+        pl.lit(N_post).alias("N")
+    ).drop(column_post)
+
+    df = pl.concat([df_pre, df_post])
+
+    df = df.group_by(df.columns).len().drop_nulls().with_columns( (100*pl.col("len")/pl.col("N")).alias("Percentage")).sort(by = standardized_col)
+
+    return df
