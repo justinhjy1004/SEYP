@@ -247,33 +247,33 @@ all_post_orientation_entry_mappings = {
 
 all_post_orientation_score_map = {
     'Highly Confident': 4,
-    'Very Confident': 3,
+    'Very Confident': 4,
     'Somewhat Confident': 2,
-    'Slightly Confident': 1,
+    'Slightly Confident': 2,
     'Slightly More Confident': 1,
     'Not Confident At All': 0,
     'Not Yet Confident': 0,
 
     'Highly Motivated': 4,
-    'Much More Motivated': 3,
-    'Slightly More Motivated': 2,
+    'Much More Motivated': 4,
+    'Slightly More Motivated': 3,
     'No Change': 1,
     'Less Motivated': 0,
 
     'More Than Expected': 4,
-    'Significant Growth': 3,
-    'Some Growth': 2,
+    'Significant Growth': 4,
+    'Some Growth': 3,
     'Slight Growth': 1,
     'No Growth At All': 0,
 
     'Significantly Better': 4,
-    'Much Better': 3,
-    'Slightly Better': 2,
+    'Much Better': 4,
+    'Slightly Better': 3,
     'Not Better At All': 1,
 
     'Clearly Understand': 4,
-    'Understand & Improving': 3,
-    'General Understanding': 2,
+    'Understand & Improving': 4,
+    'General Understanding': 3,
     'Do Not Understand': 1,
 
     'Very Clear': 4,
